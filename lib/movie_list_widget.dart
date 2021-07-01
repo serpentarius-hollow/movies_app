@@ -10,21 +10,18 @@ class MovieListWidget extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Movies'),
-        actions: [
-          TextButton(
+      ),
+      body: MovieListView(),
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: FloatingActionButton.extended(
             onPressed: () {
               context.router.pushNamed("/add_movie");
             },
-            child: Text(
-              'Add',
-              style: TextStyle(
-                color: Theme.of(context).primaryIconTheme.color,
-              ),
-            ),
-          )
-        ],
+            icon: Icon(Icons.add),
+            label: Text('Add')),
       ),
-      body: MovieListView(),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
     );
   }
 }
