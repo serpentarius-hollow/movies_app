@@ -134,27 +134,32 @@ class MovieWidget extends StatelessWidget {
                   }),
                   Observer(builder: (_) {
                     return movie.tagList.isNotEmpty
-                        ? Row(
-                            children: movie.tagList
-                                .map((tag) => Padding(
-                                      padding: EdgeInsets.only(
-                                        right: 5,
-                                        top: 10,
-                                      ),
-                                      child: TextButton(
-                                        style: TextButton.styleFrom(
-                                            primary: Colors.white,
-                                            backgroundColor: Colors.blue,
-                                            shape: RoundedRectangleBorder(
-                                                borderRadius: BorderRadius.all(
-                                                    Radius.circular(25)))),
-                                        onPressed: () {
-                                          movie.removeTag(tag);
-                                        },
-                                        child: Text(tag),
-                                      ),
-                                    ))
-                                .toList(),
+                        ? SingleChildScrollView(
+                            scrollDirection: Axis.horizontal,
+                            child: Row(
+                              children: movie.tagList
+                                  .map((tag) => Padding(
+                                        padding: EdgeInsets.only(
+                                          right: 5,
+                                          top: 10,
+                                        ),
+                                        child: TextButton(
+                                          style: TextButton.styleFrom(
+                                              primary: Colors.white,
+                                              backgroundColor: Colors.blue,
+                                              shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.all(
+                                                          Radius.circular(
+                                                              25)))),
+                                          onPressed: () {
+                                            movie.removeTag(tag);
+                                          },
+                                          child: Text(tag),
+                                        ),
+                                      ))
+                                  .toList(),
+                            ),
                           )
                         : Container();
                   }),
